@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'f=aub+y^c+qhfa-yo0ldm#eh((!debi@81#d2hd$w#u1$tglva'
+SECRET_KEY = '!d!7id6un_g5u22(u-#8uz0gj#(&nab-s1lq0080zpw%a$u3ef'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -66,6 +67,9 @@ TEMPLATES = [
         },
     },
 ]
+
+# Tell system we use CustomeUser for auth user instead of default one
+AUTH_USER_MODEL = 'users.CustomUser'
 
 WSGI_APPLICATION = 'guess23_django_rest.wsgi.application'
 
