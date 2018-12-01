@@ -4,5 +4,8 @@ from .models import CustomUser
 from .serializers import UserSerializer
 
 class UserListView(generics.ListAPIView):
-    queryset = CustomUser.objects.all()
     serializer_class = UserSerializer
+
+    def get_queryset(self):
+        user = self.request.user
+        return CustomUser.objects.filter(email=user)
