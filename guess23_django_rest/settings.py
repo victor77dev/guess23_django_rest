@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'users',
     'api',
     'games',
+    'guesses',
 ]
 
 REST_USE_JWT = True

@@ -8,4 +8,5 @@ class Game(models.Model):
     gameDiv = models.FloatField(default=3)
     gameMin = models.IntegerField(default=1)
     gameMax = models.IntegerField(default=100)
-    gameExpire = models.DateTimeField()
+    gameStart = models.DateTimeField()
+    gameEnd = models.DateTimeField()
