@@ -6,7 +6,7 @@ from rest_framework.views import status
 from users.models import CustomUser
 from .models import Guess
 from games.models import Game
-from .serializers import GuessSerializer
+from .serializers import GuessSerializer, GuessDetailsSerializer
 
 debug = True
 class GuessCreateView(generics.CreateAPIView):
@@ -76,7 +76,7 @@ class GuessUpdateView(generics.UpdateAPIView):
             return guess
 
 class GuessListAllView(generics.ListAPIView):
-    serializer_class = GuessSerializer
+    serializer_class = GuessDetailsSerializer
 
     def get_queryset(self):
         user = self.request.user
