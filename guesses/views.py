@@ -7,6 +7,7 @@ from users.models import CustomUser
 from .models import Guess
 from .serializers import GuessSerializer
 
+debug = True
 class GuessCreateView(generics.CreateAPIView):
     serializer_class = GuessSerializer
 
@@ -17,9 +18,14 @@ class GuessCreateView(generics.CreateAPIView):
         if str(tokenUserId) == userId:
             return super(GuessCreateView, self).create(request, *args, **kwargs)
         else:
+            if debug:
+                reqUser = CustomUser.objects.get(id=userId)
+                errMsg = "You are not allow to change {} (userId: {}) guess".format(reqUser.username, userId)
+            else:
+                errMsg = "You are not allow to change userId: {} guess".format(userId)
             return Response(
                 data={
-                    "error": "You are not allow to change userId: {} guess".format(userId)
+                    "error": errMsg
                 },
                 status=status.HTTP_404_NOT_FOUND
             )
