@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'rest_auth.registration',
     'users',
     'api',
+    'games',
 ]
 
 REST_USE_JWT = True
