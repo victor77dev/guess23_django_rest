@@ -2,6 +2,7 @@
 from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework.views import status
+from rest_framework.permissions import AllowAny
 
 from users.models import CustomUser
 from .models import Gameroom
@@ -26,6 +27,7 @@ class GameroomCreateView(generics.CreateAPIView):
             )
 
 class GameroomListView(generics.ListAPIView):
+    permission_classes = (AllowAny,)
     serializer_class = GameroomSerializer
 
     def get_queryset(self):

@@ -3,12 +3,14 @@ from django.utils import dateparse
 from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework.views import status
+from rest_framework.permissions import AllowAny
 
 from .models import Game
 from gamerooms.models import Gameroom
 from .serializers import GameSerializer
 
 class GameListCreateView(generics.ListCreateAPIView):
+    permission_classes = (AllowAny, )
     serializer_class = GameSerializer
 
     def create(self, request, *args, **kwargs):
