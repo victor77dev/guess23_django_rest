@@ -11,3 +11,8 @@ class UserEmailSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
         fields = ('email', )
+
+class UserUsernameSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CustomUser
+        fields = ('username', )
