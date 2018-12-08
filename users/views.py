@@ -4,9 +4,9 @@ from rest_framework import generics
 from .models import CustomUser
 from .serializers import UserSerializer
 
-class UserListView(generics.ListAPIView):
+class UserRetrieveView(generics.RetrieveAPIView):
     serializer_class = UserSerializer
 
-    def get_queryset(self):
+    def get_object(self):
         user = self.request.user
-        return CustomUser.objects.filter(email=user)
+        return CustomUser.objects.get(email=user)
