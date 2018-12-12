@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'rest_framework',
     'rest_framework.authtoken',
     'rest_auth',
@@ -68,6 +69,7 @@ SITE_ID = 1
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -76,6 +78,11 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+# CORS_ORIGIN_ALLOW_ALL = True
+CORS_ORIGIN_WHITELIST = (
+    'localhost:3000',
+)
 
 ROOT_URLCONF = 'guess23_django_rest.urls'
 
