@@ -41,4 +41,8 @@ class GameListCreateView(generics.ListCreateAPIView):
             serializer.save()
 
     def get_queryset(self):
-        return Game.objects.all()
+        gameroomId = self.request.data['gameroomId'] if 'gameroomId' in self.request.data else None
+        if gameroomId:
+            return Game.objects.filter(gameroomId=gameroomId)
+        else:
+            return Game.objects.all()

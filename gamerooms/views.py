@@ -7,7 +7,7 @@ from rest_framework.permissions import AllowAny
 from users.models import CustomUser
 from games.models import Game
 from .models import Gameroom
-from .serializers import GameroomSerializer, GameroomDetailSerializer
+from .serializers import GameroomSerializer, GameroomDetailSerializer, GameroomListGamesSerializer
 
 class GameroomCreateView(generics.CreateAPIView):
     serializer_class = GameroomSerializer
@@ -40,3 +40,8 @@ class GameroomListDetailView(generics.ListAPIView):
 
     def get_queryset(self):
         return Gameroom.objects.all()
+
+class GameroomListGamesView(generics.RetrieveAPIView):
+    permission_classes = (AllowAny,)
+    serializer_class = GameroomListGamesSerializer
+    queryset = Gameroom.objects.all()
